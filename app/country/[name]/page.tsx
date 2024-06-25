@@ -3,8 +3,7 @@ import CountryCard from "@/componentes/country-card";
 import Image from "next/image";
 import Link from "next/link";
 
-
-// async function getCountryByName(name: string): Promise<TypeCountry> {
+// async function getCountryByName(name: string): Promise<Country> {
 //   const response = await fetch(
 //     `https://restcountries.com/v3.1/name/${name}?fullText=true`
 //   );
@@ -90,7 +89,7 @@ export default async function Country({
             </h2>
           )}
         </section>
-        <div className="relative h-48 my-2 md:h-auto w-96 shadow-md md:order-last order-first">
+        <div className="relative md:h-auto h-48 my-2 w-96 shadow-md md:order-last order-first">
           <Image
             src={country.flags.svg}
             alt={country.flags.alt}
@@ -103,10 +102,9 @@ export default async function Country({
         <h3 className="mt-12 text-2xl font-semibold text-gray-800">
           Bordering countries
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-2">
+        <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 w-full gap-2">
           {borderCountries?.map((border) => (
-            // <div>{border}</div>
-            <CountryCard {...border} />
+            <CountryCard key={border.name} {...border} />
           ))}
         </div>
       </section>
